@@ -24,7 +24,6 @@ public class SortList {
             q = q.next.next;
         }
         //3. 左边sortList，右边sortList
-
         ListNode right = sortList(p.next);
         p.next = null;
         ListNode left = sortList(head);
@@ -39,7 +38,7 @@ public class SortList {
         if(right == null) {
             return left;
         }
-        ListNode result = new ListNode(1);
+        ListNode result = new ListNode(0);
         ListNode p = result;
         while (left != null && right != null) {
             if(left.val > right.val) {
@@ -51,17 +50,17 @@ public class SortList {
             }
             p = p.next;
         }
-        while(left != null) {
+        if(left != null) {
             p.next = left;
         }
-        while(right != null) {
+        if(right != null) {
             p.next = right;
         }
         return result.next;
     }
 
     public ListNode createList(int... s) {
-        ListNode listNode = new ListNode(1);
+        ListNode listNode = new ListNode(0);
         ListNode p = listNode;
         for (int i : s) {
             ListNode tmp = new ListNode(i);
@@ -74,7 +73,7 @@ public class SortList {
     public static void main(String[] args) {
         SortList s = new SortList();
         ListNode node = s.createList(5, 3, 2, 1, 4);
-        s.sortList(node);
+        node = s.sortList(node);
         s.print(node);
     }
 
