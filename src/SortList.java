@@ -59,7 +59,7 @@ public class SortList {
         return result.next;
     }
 
-    public ListNode createList(int... s) {
+    private ListNode createList(int... s) {
         ListNode listNode = new ListNode(0);
         ListNode p = listNode;
         for (int i : s) {
