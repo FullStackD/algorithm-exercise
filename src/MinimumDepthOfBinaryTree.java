@@ -1,15 +1,15 @@
-
-
+/**
+ * 111. Minimum Depth of Binary Tree
+ *
+ * @author Monster
+ * @date 2017/10/24
+ */
 public class MinimumDepthOfBinaryTree {
 
-    public int run(TreeNode root) {
-        if (root == null) {
+    private int find(TreeNode node) {
+        if (node == null) {
             return 0;
         }
-        return find(root);
-    }
-
-    private int find(TreeNode node) {
         if (node.left == null && node.right != null) {
             return find(node.right) + 1;
         }
@@ -23,16 +23,6 @@ public class MinimumDepthOfBinaryTree {
         int rightNum = find(node.right);
         int minDepth = leftNum > rightNum ? rightNum : leftNum;
         return minDepth + 1;
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 
 }
