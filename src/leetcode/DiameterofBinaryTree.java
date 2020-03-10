@@ -1,5 +1,8 @@
 package leetcode;
 
+/**
+ * 543. 二叉树的直径
+ */
 public class DiameterofBinaryTree {
 
     private int longest = 0;
@@ -12,6 +15,7 @@ public class DiameterofBinaryTree {
         return --longest;
     }
 
+    //求树的最大深度
     private int getLongestPath(TreeNode root) {
         if (root == null) {
             return 0;
