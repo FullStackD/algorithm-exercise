@@ -14,14 +14,18 @@ public class LongestSubstringWithoutRepeatingCharacters {
         if (s.length() == 0) {
             return 0;
         }
+        //最近一次字符位置
         HashMap<Character, Integer> map = new HashMap<>();
+        int start = 0;
         int max = 0;
-        for (int i = 0, j = 0; i < s.length(); i++) {
+        //滑动窗口
+        for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
-                j = Math.max(j, map.get(s.charAt(i)) + 1);
+                //更新起始点
+                start = Math.max(start, map.get(s.charAt(i)) + 1);
             }
             map.put(s.charAt(i), i);
-            max = Math.max(max, i - j + 1);
+            max = Math.max(max, i - start + 1);
         }
         return max;
     }
