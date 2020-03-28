@@ -17,12 +17,14 @@ public class ThreeSum {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
             // skip the same answer
-            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+            if (i == 0 || nums[i] != nums[i - 1]) {
                 int low = i + 1, high = nums.length - 1;
                 int sum = 0 - nums[i];
+                //转换为两数之和问题
                 while (low < high) {
                     if (nums[low] + nums[high] == sum) {
                         result.add(Arrays.asList(nums[i], nums[low], nums[high]));
+                        //跳过相同的数字
                         while (low < high && nums[low] == nums[low + 1]) {
                             low++;
                         }
