@@ -1,11 +1,15 @@
 package leetcode;
 
+
+/**
+ * 2. 两数相加
+ */
 public class AddTwoNumbers {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(0);
         ListNode tmp = result;
-        int num = 0;
+        int num = 0;//进位
         while (l1 != null && l2 != null) {
             int sum = l1.val + l2.val + num;
             ListNode numNode = new ListNode(sum % 10);
