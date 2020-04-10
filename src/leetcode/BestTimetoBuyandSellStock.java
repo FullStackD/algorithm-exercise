@@ -5,13 +5,9 @@ package leetcode;
  */
 public class BestTimetoBuyandSellStock {
 
-    public static void main(String[] args) {
-        int[] prices = {7, 6, 4, 3, 2, 1};
-        System.out.println(maxProfit(prices));
-    }
-
-    public static int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) {
+    //用数组来记录最大卖出价
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length <= 1) {
             return 0;
         }
         int res = 0;
@@ -31,5 +27,18 @@ public class BestTimetoBuyandSellStock {
         return res;
     }
 
+    //用两个变量即可
+    public int maxProfit2(int[] prices) {
+        if (prices.length <= 1) {
+            return 0;
+        }
+        int min = prices[0];//最小买入价
+        int max = 0;//最大利润
+        for (int i = 1; i < prices.length; i++) {
+            max = Math.max(max, prices[i] - min);
+            min = Math.min(min, prices[i]);
+        }
+        return max;
+    }
 }
 
