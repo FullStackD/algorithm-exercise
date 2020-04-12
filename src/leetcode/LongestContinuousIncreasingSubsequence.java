@@ -1,7 +1,7 @@
 package leetcode;
 
 /**
- * Created by Admin on 2017/10/6 0006.
+ * 674. 最长连续递增序列
  */
 public class LongestContinuousIncreasingSubsequence {
 
