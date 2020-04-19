@@ -3,10 +3,8 @@ package leetcode;
 import java.util.HashSet;
 
 /**
- * 128. Longest Consecutive Sequence
- *
- * @author Monster
- * @date 2017/12/13
+ * 128. 最长连续序列（#）
+ * 要求算法的时间复杂度为 O(n)。
  */
 public class LongestConsecutiveSequence {
 
@@ -17,14 +15,13 @@ public class LongestConsecutiveSequence {
             set.add(num);
         }
         for (int i = 0; i < nums.length; i++) {
+            //只对nums[i]作为连续序列的第一个数字去找对应的最长序列
             if (!set.contains(nums[i] - 1)) {
-                int j = nums[i];
-                while (set.contains(j)) {
-                    j++;
+                int currentNum = nums[i];
+                while (set.contains(currentNum)) {
+                    currentNum++;
                 }
-                if (ans < j - nums[i]) {
-                    ans = j - nums[i];
-                }
+                ans = Math.max(ans, currentNum - nums[i]);
             }
         }
         return ans;
