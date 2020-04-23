@@ -81,8 +81,9 @@ public class SortList {
                 ListNode left = curr;
                 ListNode right = split(left, i);
                 curr = split(right, i);//移动到下一个归并段的起始位置
+                //与上一个链表连接
                 prev.next = merge(left, right);
-
+                //移动到上个链表的尾结点
                 while (prev.next != null) {
                     prev = prev.next;
                 }
@@ -99,7 +100,7 @@ public class SortList {
             head = head.next;
         }
         ListNode right = head.next;
-        head.next = null;
+        head.next = null;//断开链表
         return right;
     }
 
