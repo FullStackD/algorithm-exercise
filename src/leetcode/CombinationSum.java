@@ -31,6 +31,9 @@ public class CombinationSum {
             ans.add(new ArrayList<>(tempList));
         }
         for (int i = start; i < nums.length; i++) {
+            if (nums[i] > remain) {
+                return;
+            }
             tempList.add(nums[i]);
             // not i + 1 because we can reuse same elements
             backtrack(ans, tempList, nums, remain - nums[i], i);
