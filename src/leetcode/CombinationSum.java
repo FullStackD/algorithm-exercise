@@ -13,24 +13,28 @@ import java.util.List;
 public class CombinationSum {
 
     public List<List<Integer>> combinationSum(int[] nums, int target) {
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(nums);
-        backtrack(list, new ArrayList<>(), nums, target, 0);
-        return list;
+        backtrack(ans, new ArrayList<>(), nums, target, 0);
+        return ans;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
-        if (remain < 0) {
-            return;
-        } else if (remain == 0) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = start; i < nums.length; i++) {
-                tempList.add(nums[i]);
-                // not i + 1 because we can reuse same elements
-                backtrack(list, tempList, nums, remain - nums[i], i);
-                tempList.remove(tempList.size() - 1);
-            }
+    /**
+     * @param ans      最终结果
+     * @param tempList 临时List
+     * @param nums     给定的无重复元素数组
+     * @param remain   目标数
+     * @param start    起始索引
+     */
+    private void backtrack(List<List<Integer>> ans, List<Integer> tempList, int[] nums, int remain, int start) {
+        if (remain == 0) {
+            ans.add(new ArrayList<>(tempList));
+        }
+        for (int i = start; i < nums.length; i++) {
+            tempList.add(nums[i]);
+            // not i + 1 because we can reuse same elements
+            backtrack(ans, tempList, nums, remain - nums[i], i);
+            tempList.remove(tempList.size() - 1);
         }
     }
 
