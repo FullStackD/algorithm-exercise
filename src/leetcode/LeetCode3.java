@@ -3,12 +3,9 @@ package leetcode;
 import java.util.HashMap;
 
 /**
- * 3. Longest Substring Without Repeating Characters
- *
- * @author Monster
- * @date 2017/11/23
+ * 3. 无重复字符的最长子串
  */
-public class LongestSubstringWithoutRepeatingCharacters {
+public class LeetCode3 {
 
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 0) {
@@ -25,6 +22,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 start = Math.max(start, map.get(s.charAt(i)) + 1);
             }
             map.put(s.charAt(i), i);
+            // 更新最大长度
             max = Math.max(max, i - start + 1);
         }
         return max;
