@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 54. Spiral Matrix
- *
- * @author Monster
- * @date 2017/12/12
+ * 54. 螺旋矩阵
  */
-public class SpiralMatrix {
+public class LeetCode54 {
 
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> list = new ArrayList<>();
