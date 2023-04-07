@@ -6,7 +6,7 @@ import java.util.HashSet;
  * 128. 最长连续序列（#）
  * 要求算法的时间复杂度为 O(n)。
  */
-public class LongestConsecutiveSequence {
+public class LeetCode128 {
 
     public int longestConsecutive(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
