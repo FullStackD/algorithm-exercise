@@ -1,12 +1,13 @@
 package leetcode;
 
 /**
- * Created by Admin on 2017/9/17 0017.
+ * 167. 两数之和 II - 输入有序数组
  */
-public class TwoSumII_Inputarrayissorted {
+public class LeetCode167 {
 
     public int[] twoSum(int[] numbers, int target) {
-        int i = 0, n = numbers.length - 1;
+        int i = 0;
+        int n = numbers.length - 1;
         while (i < n) {
             if (numbers[i] + numbers[n] > target) {
                 n--;
