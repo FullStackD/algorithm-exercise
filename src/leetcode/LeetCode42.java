@@ -1,18 +1,16 @@
 package leetcode;
 
 /**
- * 42. Trapping Rain Water
- *
- * @author Monster
- * @date 2017/12/8
+ * 42. 接雨水
  */
-public class TrappingRainWater {
+public class LeetCode42 {
 
     public int trap(int[] height) {
         if (height == null || height.length < 3) {
             return 0;
         }
-        int left = 0, right = height.length - 1;
+        int left = 0;
+        int right = height.length - 1;
         while (height[left] == 0) {
             left++;
         }
