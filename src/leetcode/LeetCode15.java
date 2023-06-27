@@ -5,21 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 15. 3Sum
- *
- * @author Monster
- * @date 2017/11/27
+ * 15. 三数之和
  */
-public class ThreeSum {
+public class LeetCode15 {
 
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
-            // skip the same answer
+            // 跳过相同的数字，避免重复答案
             if (i == 0 || nums[i] != nums[i - 1]) {
-                int low = i + 1, high = nums.length - 1;
-                int sum = 0 - nums[i];
+                int low = i + 1;
+                int high = nums.length - 1;
+                int sum = -nums[i];
                 //转换为两数之和问题
                 while (low < high) {
                     if (nums[low] + nums[high] == sum) {
