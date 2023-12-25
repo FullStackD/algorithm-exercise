@@ -9,46 +9,53 @@ import java.util.Map;
 public class LeetCode76 {
 
     public static String minWindow(String s, String t) {
-        if (t.equals("")) {
+        // 异常参数校验
+        if (t.equals("") || s.equals("")) {
             return "";
         }
-        Map<Character, Integer> countT = new HashMap<>();
+        Map<Character, Integer> need = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
-            countT.put(t.charAt(i), countT.getOrDefault(t.charAt(i), 0) + 1);
+            need.put(t.charAt(i), need.getOrDefault(t.charAt(i), 0) + 1);
         }
         Map<Character, Integer> countWindow = new HashMap<>();
+        // 窗口中的有效字符个数
+        int valid = 0;
 
-        int have = 0;
-        int need = countT.size();
-
+        // 维护一个左闭右开的区间
         int left = 0;
         int right = 0;
-        int reslength = 0;
-        int resLeft = 0;
-        int resRight = 0;
-        for (; right < s.length(); right++) {
+        // 记录最小覆盖子串的起始索引及长度
+        int start = 0, len = Integer.MAX_VALUE;
+
+        while (right < s.length()) {
             char c = s.charAt(right);
-            countWindow.put(c, countWindow.getOrDefault(c, 0) + 1);
-            if (countT.containsKey(c) && countWindow.get(c).equals(countT.get(c))) {
-                have++;
+            right++;
+            // 进行窗口内数据的一系列更新
+            if (need.containsKey(c)) {
+                countWindow.put(c, countWindow.getOrDefault(c, 0) + 1);
+                if (countWindow.get(c).equals(need.get(c))) {
+                    valid++;
+                }
             }
-            while (have == need) {
-                // update our result
-                if (reslength == 0 || right - left + 1 < reslength) {
-                    resLeft = left;
-                    resRight = right;
-                    reslength = right - left + 1;
+
+            while (valid == need.size()) {
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
                 }
+                // 窗口左边界左移
                 char leftC = s.charAt(left);
-                // pop from the left of our window
-                countWindow.put(leftC, countWindow.get(leftC) - 1);
-                if (countT.containsKey(leftC) && countWindow.get(leftC) < countT.get(leftC)) {
-                    have--;
-                }
                 left++;
+                // 进行窗口内数据的一系列更新
+                if (need.containsKey(leftC)) {
+                    if (countWindow.get(leftC).equals(need.get(leftC))) {
+                        valid--;
+                    }
+                    countWindow.put(leftC, countWindow.getOrDefault(leftC, 0) - 1);
+                }
             }
         }
-        return reslength == 0 ? "" : s.substring(resLeft, resRight + 1);
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 
 }
