@@ -1,11 +1,12 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
- * 给定一个二叉树的根节点 root ，返回它的 中序 遍历。
+ * 94. 二叉树的中序遍历
  */
 public class LeetCode94 {
 
@@ -37,7 +38,7 @@ public class LeetCode94 {
         if (root == null) {
             return result;
         }
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new LinkedList<>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.push(root);
