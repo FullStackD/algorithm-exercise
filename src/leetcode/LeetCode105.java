@@ -14,28 +14,29 @@ public class LeetCode105 {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         int length = preorder.length;
         indexMap = new HashMap<>();
+        // 记录中序遍历结点的下标
         for (int i = 0; i < inorder.length; i++) {
             indexMap.put(inorder[i], i);
         }
-        return buildTree(preorder, 0, length - 1, 0);
+        return buildTree(preorder, 0, length - 1,
+                inorder, 0, length - 1);
     }
 
-    private TreeNode buildTree(int[] preorder, int preorderLeft, int preorderRight, int inorderLeft) {
-        if (preorderLeft > preorderRight) {
+    private TreeNode buildTree(int[] preorder, int pStart, int pEnd,
+                               int[] inorder, int iStart, int iEnd) {
+        if (pStart > pEnd) {
             return null;
         }
 
-        // 中序遍历中根节点下标
-        int inorderRootIndex = indexMap.get(preorder[preorderLeft]);
+        int rootVal = preorder[pStart];
+        int rootInIndex = indexMap.get(rootVal);
+        int leftSize = rootInIndex - iStart;
 
-        TreeNode root = new TreeNode(preorder[preorderLeft]);
-        // 左子树的节点个数
-        int leftTreeLength = inorderRootIndex - inorderLeft;
-
-        root.left = buildTree(preorder, preorderLeft + 1, preorderLeft + leftTreeLength,
-                inorderLeft);
-        root.right = buildTree(preorder, preorderLeft + leftTreeLength + 1, preorderRight,
-                inorderRootIndex + 1);
+        TreeNode root = new TreeNode(rootVal);
+        root.left = buildTree(preorder, pStart + 1, pStart + leftSize,
+                inorder, iStart, rootInIndex - 1);
+        root.right = buildTree(preorder, pStart + leftSize + 1, pEnd,
+                inorder, rootInIndex + 1, iEnd);
         return root;
     }
 
