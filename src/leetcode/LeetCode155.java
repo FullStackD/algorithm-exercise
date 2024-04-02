@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * 155. 最小栈
  */
-public class MinStack {
+public class LeetCode155 {
 
     private Stack<Integer> data;
     private Stack<Integer> minStack;
@@ -13,7 +13,7 @@ public class MinStack {
     /**
      * initialize your data structure here.
      */
-    public MinStack() {
+    public LeetCode155() {
         data = new Stack<>();
         minStack = new Stack<>();
     }
@@ -26,7 +26,6 @@ public class MinStack {
     }
 
     public void pop() {
-        //push的元素可能为null，所以用equals
         if (data.peek().equals(minStack.peek())) {
             minStack.pop();
         }
