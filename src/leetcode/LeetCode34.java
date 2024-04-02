@@ -1,12 +1,9 @@
 package leetcode;
 
 /**
- * 34. Search for a Range
- *
- * @author Monster
- * @date 2017/12/4
+ * 34. 在排序数组中查找元素的第一个和最后一个位置
  */
-public class SearchforaRange {
+public class LeetCode34 {
 
     public int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
@@ -22,10 +19,10 @@ public class SearchforaRange {
             } else {
                 low = mid;
                 high = mid;
-                while (low > 0 && nums[low - 1] == nums[mid]) {
+                while (low > 0 && nums[low - 1] == target) {
                     low--;
                 }
-                while (high < nums.length - 1 && nums[high + 1] == nums[high]) {
+                while (high < nums.length - 1 && nums[high + 1] == target) {
                     high++;
                 }
                 return new int[]{low, high};
