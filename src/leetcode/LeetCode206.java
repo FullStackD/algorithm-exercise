@@ -9,6 +9,12 @@ import leetcode.common.ListNode;
 public class LeetCode206 {
 
 
+    /**
+     * 迭代解法
+     *
+     * @param head
+     * @return
+     */
     public static ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
