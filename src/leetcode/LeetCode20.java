@@ -3,9 +3,9 @@ package leetcode;
 import java.util.Stack;
 
 /**
- * Created by Admin on 2017/9/3 0003.
+ * 20. 有效的括号
  */
-public class ValidParentheses {
+public class LeetCode20 {
 
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
@@ -21,7 +21,7 @@ public class ValidParentheses {
                     stack.add(']');
                     break;
                 default:
-                    if (stack.isEmpty() || stack.pop() != '{') {
+                    if (stack.isEmpty() || stack.pop() != s.charAt(i)) {
                         return false;
                     }
             }
