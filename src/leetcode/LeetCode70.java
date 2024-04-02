@@ -9,8 +9,8 @@ public class LeetCode70 {
         if (n == 1) {
             return 1;
         }
-        int a = 1;
-        int b = 1;
+        int a = 1;// 上上个台阶的数量
+        int b = 1;// 上个台阶的数量
         // a, b, n
         for (int i = 2; i <= n; i++) {
             int tmp = a + b;
