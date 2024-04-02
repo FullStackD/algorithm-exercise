@@ -6,17 +6,17 @@ package leetcode;
 public class LeetCode5 {
 
     public String longestPalindrome(String s) {
-        int len = 0;
-        int start = 0;
+        int maxlen = 0;// 最长回文子串的长度
+        int start = 0; // 最长回文子串的起始坐标
         for (int i = 0; i < s.length(); i++) {
             int cur = Math.max(getLen(s, i, i),
                     getLen(s, i, i + 1));
-            if (cur > len) {
-                len = cur;
+            if (cur > maxlen) {
+                maxlen = cur;
                 start = i - (cur - 1) / 2;
             }
         }
-        return s.substring(start, start + len);
+        return s.substring(start, start + maxlen);
     }
 
 
