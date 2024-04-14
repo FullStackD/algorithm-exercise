@@ -3,11 +3,17 @@ package leetcode;
 
 /**
  * 215. 数组中的第K个最大元素
- * 思路：利用快排的partition算法排序
- * 当pos为nums.length-k时，说明arr[pos]是第K大的元素
  */
-public class KthLargestElementinanArray {
+public class LeetCode215 {
 
+    /**
+     * 思路：利用快排的partition算法排序
+     * 当pos为nums.length-k时，说明arr[pos]是第K大的元素
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
     public int findKthLargest(int[] nums, int k) {
         return quickSearch(nums, 0, nums.length - 1, nums.length - k);
     }
