@@ -3,7 +3,7 @@ package leetcode;
 /**
  * 121. 买卖股票的最佳时机
  */
-public class BestTimetoBuyandSellStock {
+public class LeetCode121 {
 
     //用数组来记录最大卖出价
     public int maxProfit(int[] prices) {
@@ -39,6 +39,19 @@ public class BestTimetoBuyandSellStock {
             min = Math.min(min, prices[i]);
         }
         return max;
+    }
+
+    //一个变量即可
+    public int maxProfit3(int[] prices) {
+        int maxRight = prices[prices.length - 1];
+        int maxProfit = 0;
+        for (int i = prices.length - 2; i >= 0; i--) {
+            maxProfit = Math.max(maxProfit, maxRight - prices[i]);
+            if (prices[i] > maxRight) {
+                maxRight = prices[i];
+            }
+        }
+        return maxProfit;
     }
 }
 
